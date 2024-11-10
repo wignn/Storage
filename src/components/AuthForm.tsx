@@ -71,7 +71,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
-          <h1 className="form-title">
+          <h1 className="form-title text-bg">
             {type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
           {type === "sign-up" && (
@@ -86,7 +86,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                     <FormControl>
                       <Input
                         placeholder="Enter your full name"
-                        className="shad-input"
+                        className="shad-input text-gray-300 bg-transparent border-none outline-none focus:bg-transparent"
                         {...field}
                       />
                     </FormControl>
@@ -104,12 +104,14 @@ const AuthForm = ({ type }: { type: FormType }) => {
             render={({ field }) => (
               <FormItem>
                 <div className="shad-form-item">
-                  <FormLabel className="shad-form-label">Email</FormLabel>
+                  <FormLabel className="shad-form-label ">Email</FormLabel>
 
                   <FormControl>
                     <Input
                       placeholder="Enter your email"
-                      className="shad-input"
+                      className="shad-input  text-gray-400 background: none;
+  border: none;
+  outline: none;"
                       {...field}
                     />
                   </FormControl>
@@ -120,23 +122,25 @@ const AuthForm = ({ type }: { type: FormType }) => {
             )}
           />
 
-          <Button
-            type="submit"
-            className="form-submit-button"
-            disabled={isLoading}
-          >
-            {type === "sign-in" ? "Sign In" : "Sign Up"}
+          <div className="flex justify-center">
+            <Button
+              type="submit"
+              className="form-submit-button w-full rounded-lg"
+              disabled={isLoading}
+            >
+              {type === "sign-in" ? "Sign In" : "Sign Up"}
 
-            {isLoading && (
-              <Image
-                src="/assets/icons/loader.svg"
-                alt="loader"
-                width={24}
-                height={24}
-                className="ml-2 animate-spin"
-              />
-            )}
-          </Button>
+              {isLoading && (
+                <Image
+                  src="/assets/icons/loader.svg"
+                  alt="loader"
+                  width={24}
+                  height={24}
+                  className="ml-2 animate-spin"
+                />
+              )}
+            </Button>
+          </div>
 
           {errorMessage && <p className="error-message">*{errorMessage}</p>}
 
@@ -148,7 +152,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             </p>
             <Link
               href={type === "sign-in" ? "/sign-up" : "/sign-in"}
-              className="ml-1 font-medium text-brand"
+              className="ml-1 font-medium text-gray-400"
             >
               {" "}
               {type === "sign-in" ? "Sign Up" : "Sign In"}

@@ -27,6 +27,14 @@
     border-radius: 0px;
   }
 
+  .text-bg {
+    background-image: linear-gradient(to right, #8760f7, #ffff 100%);
+    background-clip: text;
+    -webkit-background-clip:  text;
+    -webkit-text-fill-color: transparent;
+}
+
+
   .remove-scrollbar::-webkit-scrollbar-thumb:hover {
     /* background: #1e2238; */
     background: transparent;
@@ -161,7 +169,8 @@
     @apply space-y-4 max-w-[95%] sm:w-fit rounded-xl md:rounded-[30px] px-4 md:px-8 py-10 bg-white outline-none !important;
   }
   .shad-submit-btn {
-    @apply bg-brand button hover:bg-brand-100 transition-all rounded-full !important;
+    @apply bg-[#7947df] hover:bg-[#8d60ff]
+    transition-all rounded-full !important;
   }
   .shad-otp {
     @apply w-full flex gap-1 sm:gap-2 justify-between !important;
@@ -297,13 +306,13 @@
 
   /* AuthForm */
   .auth-form {
-    @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
+    @apply flex max-h-[800px] w-full max-w-[580px]  flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
   }
   .form-title {
     @apply h1 text-center text-light-100 md:text-left !important;
   }
   .form-submit-button {
-    @apply primary-btn h-[66px] !important;
+    @apply bg-[#7947df]  h-[66px] !important;
   }
   .error-message {
     @apply body-2 mx-auto w-fit rounded-xl bg-error/5 px-8 py-4 text-center text-error !important;
