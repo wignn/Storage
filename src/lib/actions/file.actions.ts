@@ -61,7 +61,6 @@ export const uploadFile = async ({
 
       
     revalidatePath(path);
-    console.log({ newFile });
     return parseStringify(newFile);
   } catch (error) {
     handleError(error, "Failed to upload file");
@@ -118,7 +117,6 @@ export const getFiles = async ({
       queries,
     );
 
-    console.log({ files });
     return parseStringify(files);
   } catch (error) {
     handleError(error, "Failed to get files");
