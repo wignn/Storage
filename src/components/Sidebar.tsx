@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import Image from "next/image";
@@ -17,14 +17,15 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
 
   return (
     <aside className="sidebar">
-      <Link href="/">
+      <Link href="/" className="flex items-center gap-2">
         <Image
-          src="/assets/icons/logo-full-brand.svg"
+          src="/favicon.png"
           alt="logo"
-          width={160}
+          width={70}
           height={50}
           className="hidden h-auto lg:block"
         />
+        <p className="text-xl font-bold"><span className="text-blue">Wi</span>gnn </p>
 
         <Image
           src="/assets/icons/logo-brand.svg"
