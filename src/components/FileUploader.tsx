@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-
 import { useDropzone } from "react-dropzone";
 import { Button } from "@/components/ui/button";
 import { cn, convertFileToUrl, getFileType } from "@/lib/utils";
@@ -25,9 +24,26 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
-      setFiles(acceptedFiles);
 
-      const uploadPromises = acceptedFiles.map(async (file) => {
+      const filteredFiles = acceptedFiles.filter((file) => {
+        const { extension } = getFileType(file.name);
+        if (extension === "zip") {
+          toast({
+            description: (
+              <p className="body-2 text-white">
+                <span className="font-semibold">{file.name}</span> is not allowed. Zip files are not accepted.
+              </p>
+            ),
+            className: "error-toast",
+          });
+          return false;
+        }
+        return true;
+      });
+
+      setFiles(filteredFiles);
+
+      const uploadPromises = filteredFiles.map(async (file) => {
         if (file.size > MAX_FILE_SIZE) {
           setFiles((prevFiles) =>
             prevFiles.filter((f) => f.name !== file.name),
@@ -57,7 +73,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
 
       await Promise.all(uploadPromises);
     },
-    [ownerId, accountId, path],
+    [ownerId, accountId, path, toast],
   );
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
